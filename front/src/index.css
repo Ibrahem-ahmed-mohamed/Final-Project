@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* @plugin "daisyui"; */
+.swiper-button-prev,
+.swiper-button-next{
+    color: #DB4444 !important;
+} 
+.swiper-pagination-bullet-active{
+    background-color: #DB4444 !important;
+}
+
+nav a.active{
+    border-bottom: 1px solid black;
+}
+.bgred{
+    background-color: #DB4444;
+}
+.texred{
+    color: #DB4444;
+}
+.texgray{
+    color:  #99a1af;
+}
+.bggray{
+    background-color:  #99a1af;
+}
+.letter{
+    letter-spacing: 4%;
+}
+.bordgray{
+    border-color: #2f2e304d;
+}
+.bordcol{
+    border-color: #0000004D;
+}
+.bgsecond{
+    background-color: #F5F5F5;
+}
+/* nav list */
+@media (min-width:0px) and (max-width:736px){
+.nav{
+    top: 19%;
+            flex-direction:column ;
+        position: absolute;
+        right: 8%;
+        width: 25%;
+        margin-top: 0px;
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(221, 220, 220, 0.555);
+
+}
+}
+
+@media (min-width:737px) and (max-width:1024px){
+
+    .nav {
+        
+        flex-direction:column ;
+        position: absolute;
+        top: 15%;
+        right: 8%;
+        width: 25%;
+        margin-top: 0px;
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(221, 220, 220, 0.555);
+
+    }
+}
+
+    .listacc {
+        backdrop-filter: blur(8px);
+        flex-direction:column ;
+        position: absolute;
+        top: 13.5%;
+        right: 20.5%;
+        /* width: 25%; */
+        margin-top: 0px;
+        border-radius: 10px;
+        background:#0000000A;
+
+    }
