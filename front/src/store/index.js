@@ -21,7 +21,6 @@ export let wishListStore = create((set) => ({
 }));
 
 export const cartStore = create((set) => ({
-    cart:0,
-    addCart:()=>set((state)=>({cart:state.cart + 1})),
-	removeCart: () => set((state) => ({cart:state.cart === state.addCart }))
+	cart: 0,
+	addCart: () => set((state) => ({ cart: state.cart + 1 })),
 }));

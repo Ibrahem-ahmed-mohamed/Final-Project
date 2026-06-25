@@ -16,14 +16,12 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { RiCustomerServiceLine } from "react-icons/ri";
 import { GoShieldCheck } from "react-icons/go";
 
-
-
 export default function About() {
 	return (
-		<div className="w-full  xl:ps-33.75">
+		<div className="w-full sm:ps-10 md:ps-20	  xl:ps-48">
 			{/* location */}
 			<div className="flex sm:ps-9 xl:ps-0 gap-3">
-				<Link className="texgray" to={"/home"}>
+				<Link className="texgray" to={"/"}>
 					Home
 				</Link>
 				<span className="texgray">/</span>
@@ -47,7 +45,7 @@ export default function About() {
 					</p>
 				</div>
 				{/* img */}
-				<div className=" sm:w-[70%] xl:w-[50%]">
+				<div className=" sm:w-[70%] xl:w-[62%]">
 					<img
 						className="w-full"
 						src="../../../public/about image.png"
@@ -98,18 +96,18 @@ export default function About() {
 			{/* slider */}
 			<div className="pt-35 w-full pe-33.75">
 				<Swiper
-				className="flex justify-center"
+					className="flex justify-center"
 					modules={[Navigation, Pagination, Scrollbar, A11y]}
 					spaceBetween={50}
 					breakpoints={{
-						0:{
-							slidesPerView:1,
+						0: {
+							slidesPerView: 1,
 						},
-						768:{
-							slidesPerView:2,
+						768: {
+							slidesPerView: 2,
 						},
-						1536:{
-							slidesPerView:3,
+						1536: {
+							slidesPerView: 3,
 						},
 					}}
 					navigation
@@ -188,34 +186,40 @@ export default function About() {
 			</div>
 			{/* services */}
 			<div className="pt-35 flex justify-around pe-33.75 items-center">
-        {/* 1 */}
+				{/* 1 */}
 				<div className="flex flex-col items-center">
 					<div className="rounded-full group-hover:border-[#FFFFFF4D]  border-[#2f2e304d] border-10 w-fit">
 						{/* <img  src="../../../public/icon_shop.png" alt="" /> */}
 						<TbTruckDelivery className=" bg-black text-white group-hover:bg-white group-hover:text-black  text-4xl  rounded-3xl p-1 " />
 					</div>
-					<p className="font-semibold text-xl pt-6 pb-2">FREE AND FAST DELIVERY</p>
+					<p className="font-semibold text-xl pt-6 pb-2">
+						FREE AND FAST DELIVERY
+					</p>
 					<p>Free delivery for all orders over $140</p>
 				</div>
-        {/* 2 */}
-        				<div className="flex flex-col items-center">
+				{/* 2 */}
+				<div className="flex flex-col items-center">
 					<div className="rounded-full group-hover:border-[#FFFFFF4D]  border-[#2f2e304d] border-10 w-fit">
 						{/* <img  src="../../../public/icon_shop.png" alt="" /> */}
 						<RiCustomerServiceLine className=" bg-black text-white group-hover:bg-white group-hover:text-black  text-4xl  rounded-3xl p-1 " />
-          </div>
-					<p className="font-semibold text-xl pt-6 pb-2">24/7 CUSTOMER SERVICE</p>
+					</div>
+					<p className="font-semibold text-xl pt-6 pb-2">
+						24/7 CUSTOMER SERVICE
+					</p>
 					<p>Friendly 24/7 customer support</p>
 				</div>
-        {/* 3 */}
-        				<div className="flex flex-col items-center">
+				{/* 3 */}
+				<div className="flex flex-col items-center">
 					<div className="rounded-full group-hover:border-[#FFFFFF4D]  border-[#2f2e304d] border-10 w-fit">
 						{/* <img  src="../../../public/icon_shop.png" alt="" /> */}
 						<GoShieldCheck className=" bg-black text-white group-hover:bg-white group-hover:text-black  text-4xl  rounded-3xl p-1 " />
 					</div>
-					<p className="font-semibold text-xl pt-6 pb-2">MONEY BACK GUARANTEE</p>
+					<p className="font-semibold text-xl pt-6 pb-2">
+						MONEY BACK GUARANTEE
+					</p>
 					<p>We reurn money within 30 days</p>
 				</div>
-        {/*  */}
+				{/*  */}
 			</div>
 			{/* end */}
 		</div>

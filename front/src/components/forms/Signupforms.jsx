@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { regsiterSchema } from "../../schemas/signup-schema";
 import axios from "axios";
 import Loginforms from "./Loginforms";
@@ -8,6 +8,8 @@ import userDataStore from "../../store";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Signupforms() {
+	let navigate = useNavigate();
+
 	const setUser = userDataStore((state) => state.setUser);
 	async function handelregister(values) {
 		const isEmail = values.emailOrPhone.includes("@");
@@ -21,10 +23,10 @@ export default function Signupforms() {
 					password: values.password,
 				},
 			);
-			localStorage.setItem("token:",res.data.jwt)
+			localStorage.setItem("token:", res.data.jwt);
 
-			console.log("res:",res.data);
-			
+			console.log("res:", res.data);
+
 			if (!isEmail) {
 				const phoneRes = await axios.put(
 					`http://localhost:1337/api/users/${res.data.user.id}`,
@@ -35,14 +37,18 @@ export default function Signupforms() {
 						headers: { Authorization: `Bearer ${res.data.jwt}` },
 					},
 				);
-				console.log("resphone:",phoneRes.data);
-				
+				console.log("resphone:", phoneRes.data);
+
 				setUser(phoneRes.data);
 			} else {
 				setUser(res.data.user);
 			}
 			toast.success("Account created successfully! 🎉");
-			console.log("store:",userDataStore.getState().user);
+			console.log("store:", userDataStore.getState().user);
+			localStorage.setItem("token:", res.data.jwt);
+			setTimeout(() => {
+				navigate("/");
+			}, 5000);
 		} catch (err) {
 			toast.error("Account isn't created!");
 			console.log(err);
@@ -93,7 +99,11 @@ export default function Signupforms() {
 									>
 										Name
 									</label>
-									<ErrorMessage component="div" name="username" className="text-red-500" />
+									<ErrorMessage
+										component="div"
+										name="username"
+										className="text-red-500"
+									/>
 								</div>
 								<div className="relative z-0 w-full  group">
 									{/* email field */}
@@ -111,7 +121,11 @@ export default function Signupforms() {
 									>
 										Email or Phone Number
 									</label>
-									<ErrorMessage component="div" name="emailOrPhone" className="text-red-500" />
+									<ErrorMessage
+										component="div"
+										name="emailOrPhone"
+										className="text-red-500"
+									/>
 								</div>
 								<div className="relative z-0 w-full  group">
 									{/* password field */}
@@ -129,7 +143,11 @@ export default function Signupforms() {
 									>
 										password
 									</label>
-									<ErrorMessage component="div" name="password" className="text-red-500" />
+									<ErrorMessage
+										component="div"
+										name="password"
+										className="text-red-500"
+									/>
 								</div>
 								<div>
 									<button

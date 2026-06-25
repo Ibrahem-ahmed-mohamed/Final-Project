@@ -1,7 +1,13 @@
-import TopSideHome from "../../components/homePage/TopSideHome";
-import FlashSale from "../../components/homePage/FlashSale";
+import TopSideHome from "../../components/homePage/topside/TopSideHome";
+import FlashSale from "../../components/homePage/flashSale/FlashSale";
 import { getActiveFlashSale } from "../../services/flashApi";
 import React, { useState, useEffect } from "react";
+import Categories from "../../components/homePage/categories/Categories";
+import BestSelling from "../../components/homePage/bestSelling/BestSelling";
+import MusicOffer from "../../components/homePage/musicOffer/MusicOffer";
+import OurProducts from "../../components/homePage/ourProduct/OurProducts";
+import NewArrival from "../../components/homePage/newArrival/NewArrival";
+import Services from "../../components/homePage/services/Services";
 export default function Homepage() {
 	const [flashSale, setFlashSale] = useState(null);
 	const [products, setProducts] = useState([]);
@@ -56,15 +62,45 @@ export default function Homepage() {
 
 	return (
 		<>
-		<div className="container mx-auto">
-				<TopSideHome className="w-full" />
-
-								<FlashSale
-					flashSale={flashSale}
-					timeLeft={timeLeft}
-					products={products}
-				/>
-
+			<div className=" w-full flex flex-col overflow-hidden">
+				<div className=" container mx-auto flex flex-col ">
+					{/* top side */}
+					<div>
+						<TopSideHome className="w-full" />
+					</div>
+					{/* flash sale */}
+					<div className="items-start mt-35">
+						<FlashSale
+							flashSale={flashSale}
+							timeLeft={timeLeft}
+							products={products}
+						/>
+					</div>
+					<hr className=" mt-15 mb-20 hrColor" />
+					{/* categories */}
+					<div className="items-center">
+						<Categories flashSale={flashSale} products={products} />
+					</div>
+					<hr className=" mt-17.5 mb-17.5 hrColor" />
+					{/* best selling */}
+					<div className="mb-35">
+						<BestSelling />
+					</div>
+					{/*  */}
+					<div className="mb-17.75">
+						<MusicOffer/>
+					</div>
+					{/*  */}
+					<div>
+						<OurProducts/>
+					</div>
+					<div>
+						<NewArrival/>
+					</div>
+					<div>
+						<Services/>
+					</div>
+				</div>
 			</div>
 		</>
 	);

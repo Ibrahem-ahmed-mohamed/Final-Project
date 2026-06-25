@@ -15,16 +15,17 @@ export default function FlashSale({ flashSale, timeLeft, products }) {
 	if (!flashSale || !products || products.length === 0) return null;
 
 	return (
-		<div className="pt-35  w-full">
+		<div className="w-full   xl:mt-0">
 			<div className="flex gap-4 items-center">
-				<span className="p-2 pt-9 bgred rounded-sm"></span>
+				<span className="p-3 pt-9 bgred rounded-sm"></span>
 				<p className="texred font-semibold">Today's</p>
 			</div>
 			{/* timer */}
 			<div className="pt-6 flex justify-between w-full relative">
 				<div className="flex gap-21.75 items-end w-full">
-					<p className=" pb-1.5 font-semibold text-4xl">Flash Sales</p>
 					{/* time */}
+					<div className="flex items-center sm:gap-10 lg:gap-21.75 sm:flex-col md:flex-row">
+					<p className=" pt-2 font-semibold text-4xl sm:pr-28 md:pr-0">Flash Sales</p>
 					<div className=" flex items-center gap-4.25">
 						<div>
 							<p className="font-medium text-[12px]">Days</p>
@@ -54,6 +55,7 @@ export default function FlashSale({ flashSale, timeLeft, products }) {
 							</span>
 						</div>
 					</div>
+					</div>
 					{/* navigate images */}
 					<div className="flex absolute right-[10%]">
 						<button
@@ -72,24 +74,40 @@ export default function FlashSale({ flashSale, timeLeft, products }) {
 				</div>
 			</div>
 			{/* products */}
-			<div className="relative">
-			<Swiper className="absolute left-[]"
-				modules={[Navigation]}
-				spaceBetween={-150}
-				slidesPerView={4}
-				onSwiper={(Swiper) => (swiperRef.current = Swiper)}
-			>
-				{products.map((product) => (
-					<SwiperSlide key={product.id}>
-						<SaleProduct product={product} />
-					</SwiperSlide>
-				))}
-			</Swiper>
+			<div>
+				<div className=" w-screen">
+					<Swiper
+						modules={[Navigation]}
+						// navigation
+						spaceBetween={0}
+						slidesPerView={5.75}
+						breakpoints={{
+							480: { slidesPerView: 2 },
+							640: { slidesPerView: 2.5 },
+							768: { slidesPerView: 2.75 },
+							1024: { slidesPerView: 3.75 },
+							1280: { slidesPerView: 4.25 },
+							1536: { slidesPerView: 4.75 },
+							1570:{slidesPerView:6}
+						}}
+						onSwiper={(Swiper) => (swiperRef.current = Swiper)}
+					>
+						{products.slice(0, 10).map((product) => (
+							<SwiperSlide key={product.id}>
+								<SaleProduct product={product} />
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
 			</div>
-			<div className="flex justify-center mt-15 me-33.75">
-				<Link to={"/flashsale"} className="py-4 px-12 text-white bgred rounded-sm cursor-pointer">
-					View All Products
-				</Link>
+
+			{/*  View All Products  */}
+			<div className="container mx-auto px-4 mt-8">
+				<div className="flex justify-center">
+					<button className="bg-red-600 cursor-pointer text-white px-8 py-3 rounded-md hover:bg-red-700 transition">
+						View All Products
+					</button>
+				</div>
 			</div>
 		</div>
 	);
